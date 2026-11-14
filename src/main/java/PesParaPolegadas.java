@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 public final class PesParaPolegadas {
     private PesParaPolegadas() {
     }

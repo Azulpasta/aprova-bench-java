@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 public final class LibrasParaOncas {
     private LibrasParaOncas() {
     }
