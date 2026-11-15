@@ -1,10 +1,34 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
+import java.util.TreeMap;
 
 class PalindromeCalculator {
 
     SortedMap<Long, List<List<Integer>>> getPalindromeProductsWithFactors(int minFactor, int maxFactor) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        if (minFactor > maxFactor) {
+            throw new IllegalArgumentException("invalid input: min must be <= max");
+        }
+
+        SortedMap<Long, List<List<Integer>>> palindromes = new TreeMap<>();
+
+        for (int i = minFactor; i <= maxFactor; i++) {
+            for (int j = i; j <= maxFactor; j++) {
+                long product = (long) i * j;
+                if (isPalindrome(product)) {
+                    palindromes.computeIfAbsent(product, k -> new ArrayList<>())
+                        .add(List.of(i, j));
+                }
+            }
+        }
+
+        return palindromes;
+    }
+
+    private boolean isPalindrome(long num) {
+        String str = String.valueOf(num);
+        String reversed = new StringBuilder(str).reverse().toString();
+        return str.equals(reversed);
     }
 
 }
